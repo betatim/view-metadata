@@ -2,10 +2,17 @@
   "name": "view-metadata",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://betatim.github.io/view-metadata",
   "devDependencies": {
+    "eslint": "^3.11.1",
+    "eslint-config-airbnb": "^13.0.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-react": "^6.8.0",
+    "gh-pages": "^0.12.0",
     "react-scripts": "0.8.2"
   },
   "dependencies": {
+    "exif-js": "^2.1.1",
     "react": "^15.4.1",
     "react-dom": "^15.4.1",
     "react-dropzone": "^3.7.3"
@@ -14,6 +21,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "npm run build&&gh-pages -d build"
   }
 }
