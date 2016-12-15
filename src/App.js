@@ -1,5 +1,11 @@
 import React, { Component } from 'react';
 import DropZone from 'react-dropzone';
+
+import { Router, Route, hashHistory } from 'react-router';
+
+import RaisedButton from 'material-ui/RaisedButton';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+
 import EXIF from 'exif-js';
 import logo from './logo.svg';
 import './App.css';
@@ -122,7 +128,7 @@ class FilterableImageList extends Component {
 }
 
 
-class App extends Component {
+class DZApp extends Component {
   constructor(props) {
     super(props)
     this.state = {files: null}
@@ -130,7 +136,6 @@ class App extends Component {
   }
 
   // static data for testing
-  /*
   componentDidMount() {
     let IMAGES = []
     let xhr = new XMLHttpRequest();
@@ -151,7 +156,6 @@ class App extends Component {
       this.setState({ files: IMAGES });
     };
   }
-  */
 
   handleDrop(files) {
     this.setState({ files: files });
@@ -172,6 +176,7 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h2>Metadata Viewer</h2>
         </div>
+        <RaisedButton label="Default" />
         <p className="App-intro">
           Drag and drop images to see their metadata. The data will never
           leave your computer.
@@ -193,5 +198,15 @@ class App extends Component {
     );
   }
 }
+
+const App = () => (
+  <MuiThemeProvider>
+    <Router history={hashHistory}>
+      <Route path="/" component={DZApp} />
+      <Route path="/iamge/:imageId" component={Image} />
+    </Router>
+  </MuiThemeProvider>
+
+);
 
 export default App;
